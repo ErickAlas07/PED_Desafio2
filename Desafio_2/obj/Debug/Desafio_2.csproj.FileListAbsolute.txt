@@ -1,0 +1,14 @@
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\bin\Debug\Desafio_2.exe.config
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\bin\Debug\Desafio_2.exe
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\bin\Debug\Desafio_2.pdb
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.csproj.AssemblyReference.cache
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.Form1.resources
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.Properties.Resources.resources
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.csproj.GenerateResource.cache
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.exe
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.pdb
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.Ventanas.FArco.resources
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.Ventanas.FVertice.resources
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.Ventanas.MBAnchura.resources
+C:\Users\LENOVO\OneDrive\Escritorio\UDB\PED\2024\Desafio_2\Desafio_2\obj\Debug\Desafio_2.Ventanas.MBProfundidad.resources
