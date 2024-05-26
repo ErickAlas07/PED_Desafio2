@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Desafio_2
 {
+
     public partial class Form1 : Form
     {
         private Grafo grafo;
@@ -25,23 +26,32 @@ namespace Desafio_2
 
         private bool isImageLoaded = false; // Bandera para verificar si la imagen está cargada
 
+        // Diccionarios para almacenar los nodos de cada país
+        private Dictionary<string, Point> nodosElSalvador = new Dictionary<string, Point>();
+        private Dictionary<string, Point> nodosHonduras = new Dictionary<string, Point>();
+        private Dictionary<string, Point> nodosCostaRica = new Dictionary<string, Point>();
+
         public Form1()
         {
             InitializeComponent();
             resetear();
 
-            // Inicializa el ComboBox con las opciones de países
+            // Inicializar el ComboBox con las opciones de países
             cmbPaises.Items.Add("El Salvador");
             cmbPaises.Items.Add("Honduras");
-            cmbPaises.Items.Add("Guatemala");
+            cmbPaises.Items.Add("Costa Rica");
 
             // Maneja el evento de cambio de selección
             cmbPaises.SelectedIndexChanged += cmbPaises_SelectedIndexChanged;
 
-            // Configura el PictureBox para que llene el panel
+            // Configurar el PictureBox para que llene el panel
             ptbMapa.Dock = DockStyle.Fill;
             ptbMapa.SizeMode = PictureBoxSizeMode.Zoom;
             ptbMapa.Paint += ptbMapa_Paint; // Agrega el evento Paint al PictureBox
+            ptbMapa.SizeMode = PictureBoxSizeMode.Zoom; // Asegúrate de que esto esté configurado
+
+            // Configurar nodos de cada país
+            ConfigurarNodos();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -63,43 +73,19 @@ namespace Desafio_2
         {
             grafo = new Grafo();
             cmbDepartamentos.Items.Clear();
-
-            var nodos = new Dictionary<string, Point>
-            {
-                { "Santa Ana", new Point(150, 103) },
-                { "Ahuachapán", new Point(66, 155) },
-                { "Sonsonate", new Point(122, 200) },
-                { "Chalatenango", new Point(260, 80) },
-                { "La Libertad", new Point(192, 210) },
-                { "San Salvador", new Point(237, 177) },
-                { "Cuscatlán", new Point(263, 145) },
-                { "Cabañas", new Point(350, 150) },
-                { "San Vicente", new Point(347, 208) },
-                { "La Paz", new Point(283, 250) },
-                { "Usulután", new Point(390, 275) },
-                { "San Miguel", new Point(461, 250) },
-                { "Morazán", new Point(488, 180) },
-                { "La Unión", new Point(536, 255) }
-            };
-
-            foreach (var kvp in nodos)
-            {
-                var nodo = new Vertice { Posicion = kvp.Value, Valor = kvp.Key };
-                grafo.AgregarVertice(nodo);
-                cmbDepartamentos.Items.Add(nodo.Valor);
-            }
+            CargarNodos("El Salvador");
         }
 
         private void rbDirigido_CheckedChanged(object sender, EventArgs e)
         {
             dirigido = true;
-            ptbMapa.Invalidate(); // Fuerza la repintura del PictureBox
+            ptbMapa.Invalidate(); 
         }
 
         private void rbNoDirigido_CheckedChanged(object sender, EventArgs e)
         {
             dirigido = false;
-            ptbMapa.Invalidate(); // Fuerza la repintura del PictureBox
+            ptbMapa.Invalidate();
         }
 
         private void ptbMapa_MouseLeave(object sender, EventArgs e)
@@ -171,7 +157,7 @@ namespace Desafio_2
                 NodoOrigen = null;
                 NodoDestino = null;
 
-                ptbMapa.Invalidate();  // Fuerza el redibujado del PictureBox
+                ptbMapa.Invalidate();  
             }
         }
 
@@ -217,35 +203,25 @@ namespace Desafio_2
             }
         }
 
+
         private void cmbPaises_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbDepartamentos.Items.Clear();
-
-            // Obtén el país seleccionado
             string selectedCountry = cmbPaises.SelectedItem.ToString();
+            LimpiarNodos();
 
-            // Determina qué imagen cargar según la selección
             switch (selectedCountry)
             {
                 case "El Salvador":
                     ptbMapa.Image = Image.FromFile("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\UDB\\PED\\2024\\Desafio_2\\Desafio_2\\src\\El Salvador.png");
-                    // Asumiendo que grafo es una instancia de tu clase Grafo ya inicializada
-                    foreach (var nodo in grafo.nodos)
-                    {
-                        cmbDepartamentos.Items.Add(nodo.Valor);
-                    }
-
-                    // Seleccionar el primer elemento por defecto (opcional)
-                    if (cmbDepartamentos.Items.Count > 0)
-                    {
-                        cmbDepartamentos.SelectedIndex = 0;
-                    }
+                    CargarNodos("El Salvador");
                     break;
                 case "Honduras":
                     ptbMapa.Image = Image.FromFile("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\UDB\\PED\\2024\\Desafio_2\\Desafio_2\\src\\Honduras.jpeg");
+                    CargarNodos("Honduras");
                     break;
-                case "Guatemala":
-                    ptbMapa.Image = Image.FromFile("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\UDB\\PED\\2024\\Desafio_2\\Desafio_2\\src\\Guatemala.png");
+                case "Costa Rica":
+                    ptbMapa.Image = Image.FromFile("C:\\Users\\LENOVO\\OneDrive\\Escritorio\\UDB\\PED\\2024\\Desafio_2\\Desafio_2\\src\\Costa_Rica.png");
+                    CargarNodos("Costa Rica");
                     break;
                 default:
                     ptbMapa.Image = null; // Limpia la imagen si no hay coincidencia
@@ -253,7 +229,7 @@ namespace Desafio_2
             }
 
             isImageLoaded = (ptbMapa.Image != null); // Actualiza la bandera según si la imagen está cargada
-            ptbMapa.Invalidate(); // Fuerza la repintura del PictureBox
+            ptbMapa.Invalidate();
         }
 
         private void CMSCrearVertice_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -462,5 +438,102 @@ namespace Desafio_2
             }
 
         }
+
+        private void ConfigurarNodos()
+        {
+            // Nodos de El Salvador
+            nodosElSalvador = new Dictionary<string, Point>
+            {
+                { "Santa Ana", new Point(150, 103) },
+                { "Ahuachapán", new Point(66, 155) },
+                { "Sonsonate", new Point(122, 200) },
+                { "Chalatenango", new Point(260, 80) },
+                { "La Libertad", new Point(192, 210) },
+                { "San Salvador", new Point(237, 177) },
+                { "Cuscatlán", new Point(263, 145) },
+                { "Cabañas", new Point(350, 150) },
+                { "San Vicente", new Point(347, 208) },
+                { "La Paz", new Point(283, 250) },
+                { "Usulután", new Point(390, 275) },
+                { "San Miguel", new Point(461, 250) },
+                { "Morazán", new Point(488, 180) },
+                { "La Unión", new Point(536, 255) }
+            };
+
+            // Nodos de Honduras
+            nodosHonduras = new Dictionary<string, Point>
+            {
+                { "Atlántida", new Point(220, 110) },
+                { "Colón", new Point(335, 105) },
+                { "Comayagua", new Point(183, 177) },
+                { "Copán", new Point(70, 170) },
+                { "Cortés", new Point(150, 115) },
+                { "Choluteca", new Point(233, 285) },
+                { "El Paraíso", new Point(290, 227) },
+                { "Francisco Morazán", new Point(227, 210) },
+                { "Gracias a Dios", new Point(447, 135) },
+                { "Intibucá", new Point(140, 200) },
+                { "Islas de la Bahía", new Point(320, 50) },
+                { "La Paz", new Point(165, 230) },
+                { "Lempira", new Point(100, 220) },
+                { "Ocotepeque", new Point(65, 200) },
+                { "Olancho", new Point(320, 170) },
+                { "Santa Bárbara", new Point(120, 140) },
+                { "Valle", new Point(185, 270) },
+                { "Yoro", new Point(213, 146) }
+            };
+
+            //Nodos de Costa Rica
+            nodosCostaRica = new Dictionary<string, Point>
+            {
+                { "Alajuela", new Point(250, 95) },
+                { "Cartago", new Point(345, 170) },
+                { "Guanacaste", new Point(122, 90) },
+                { "Heredia", new Point(310, 90) },
+                { "Limón", new Point(415, 180) },
+                { "Puntarenas", new Point(405, 260) },
+                { "San José", new Point(263, 175) }
+            };
+        }
+
+        private void CargarNodos(string pais)
+        {
+            grafo = new Grafo();
+            cmbDepartamentos.Items.Clear();
+            Dictionary<string, Point> nodos;
+
+            if (pais == "El Salvador")
+            {
+                nodos = nodosElSalvador;
+            }
+            else if (pais == "Honduras")
+            {
+                nodos = nodosHonduras;
+            }
+            else if (pais == "Costa Rica")
+            {
+                nodos = nodosCostaRica;
+            }
+            else
+            {
+                // Añadir lógica para otros países si es necesario
+                return;
+            }
+
+            foreach (var kvp in nodos)
+            {
+                var nodo = new Vertice { Posicion = kvp.Value, Valor = kvp.Key };
+                grafo.AgregarVertice(nodo);
+                cmbDepartamentos.Items.Add(nodo.Valor);
+            }
+        }
+
+        private void LimpiarNodos()
+        {
+            grafo = new Grafo();
+            cmbDepartamentos.Items.Clear();
+        }
+
+
     }
 }

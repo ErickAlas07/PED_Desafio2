@@ -37,6 +37,7 @@ namespace Desafio_2
             this.cmbDepartamentos = new System.Windows.Forms.ComboBox();
             this.lblInicialD = new System.Windows.Forms.Label();
             this.pnlMapa = new System.Windows.Forms.Panel();
+            this.ptbMapa = new System.Windows.Forms.PictureBox();
             this.grpMapas = new System.Windows.Forms.GroupBox();
             this.cmbPaises = new System.Windows.Forms.ComboBox();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -47,14 +48,13 @@ namespace Desafio_2
             this.nuevoVérticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarVérticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarArcoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ptbMapa = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpRecorridos.SuspendLayout();
             this.pnlMapa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMapa)).BeginInit();
             this.grpMapas.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.CMSCrearVertice.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMapa)).BeginInit();
             this.SuspendLayout();
             // 
             // grpRecorridos
@@ -76,7 +76,7 @@ namespace Desafio_2
             // btnProfundidad
             // 
             this.btnProfundidad.ForeColor = System.Drawing.Color.Black;
-            this.btnProfundidad.Location = new System.Drawing.Point(114, 62);
+            this.btnProfundidad.Location = new System.Drawing.Point(125, 61);
             this.btnProfundidad.Name = "btnProfundidad";
             this.btnProfundidad.Size = new System.Drawing.Size(120, 35);
             this.btnProfundidad.TabIndex = 2;
@@ -87,9 +87,9 @@ namespace Desafio_2
             // btnBuscar
             // 
             this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(244, 63);
+            this.btnBuscar.Location = new System.Drawing.Point(257, 63);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(165, 34);
+            this.btnBuscar.Size = new System.Drawing.Size(165, 33);
             this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar departamento";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@ namespace Desafio_2
             // btnAnchura
             // 
             this.btnAnchura.ForeColor = System.Drawing.Color.Black;
-            this.btnAnchura.Location = new System.Drawing.Point(9, 63);
+            this.btnAnchura.Location = new System.Drawing.Point(18, 61);
             this.btnAnchura.Name = "btnAnchura";
-            this.btnAnchura.Size = new System.Drawing.Size(90, 34);
+            this.btnAnchura.Size = new System.Drawing.Size(90, 35);
             this.btnAnchura.TabIndex = 1;
             this.btnAnchura.Text = "Anchura";
             this.btnAnchura.UseVisualStyleBackColor = true;
@@ -131,12 +131,27 @@ namespace Desafio_2
             this.pnlMapa.Size = new System.Drawing.Size(806, 446);
             this.pnlMapa.TabIndex = 1;
             // 
+            // ptbMapa
+            // 
+            this.ptbMapa.Location = new System.Drawing.Point(-1, 0);
+            this.ptbMapa.Name = "ptbMapa";
+            this.ptbMapa.Size = new System.Drawing.Size(807, 446);
+            this.ptbMapa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.ptbMapa.TabIndex = 0;
+            this.ptbMapa.TabStop = false;
+            this.ptbMapa.Paint += new System.Windows.Forms.PaintEventHandler(this.ptbMapa_Paint);
+            this.ptbMapa.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseClick);
+            this.ptbMapa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseDown);
+            this.ptbMapa.MouseLeave += new System.EventHandler(this.ptbMapa_MouseLeave);
+            this.ptbMapa.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseMove);
+            this.ptbMapa.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseUp);
+            // 
             // grpMapas
             // 
             this.grpMapas.Controls.Add(this.cmbPaises);
             this.grpMapas.Location = new System.Drawing.Point(22, 605);
             this.grpMapas.Name = "grpMapas";
-            this.grpMapas.Size = new System.Drawing.Size(236, 81);
+            this.grpMapas.Size = new System.Drawing.Size(260, 81);
             this.grpMapas.TabIndex = 2;
             this.grpMapas.TabStop = false;
             this.grpMapas.Text = "Visita Centroamérica";
@@ -230,26 +245,12 @@ namespace Desafio_2
             this.eliminarArcoToolStripMenuItem.Text = "Eliminar Arco";
             this.eliminarArcoToolStripMenuItem.Click += new System.EventHandler(this.eliminarArcoToolStripMenuItem_Click);
             // 
-            // ptbMapa
-            // 
-            this.ptbMapa.Location = new System.Drawing.Point(-1, 0);
-            this.ptbMapa.Name = "ptbMapa";
-            this.ptbMapa.Size = new System.Drawing.Size(807, 446);
-            this.ptbMapa.TabIndex = 0;
-            this.ptbMapa.TabStop = false;
-            this.ptbMapa.Paint += new System.Windows.Forms.PaintEventHandler(this.ptbMapa_Paint);
-            this.ptbMapa.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseClick);
-            this.ptbMapa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseDown);
-            this.ptbMapa.MouseLeave += new System.EventHandler(this.ptbMapa_MouseLeave);
-            this.ptbMapa.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseMove);
-            this.ptbMapa.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ptbMapa_MouseUp);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkRed;
             this.panel1.Location = new System.Drawing.Point(0, -3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(977, 136);
+            this.panel1.Size = new System.Drawing.Size(980, 136);
             this.panel1.TabIndex = 7;
             // 
             // Form1
@@ -259,11 +260,11 @@ namespace Desafio_2
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(979, 698);
             this.Controls.Add(this.pnlMapa);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.grpMapas);
             this.Controls.Add(this.grpRecorridos);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -272,11 +273,11 @@ namespace Desafio_2
             this.grpRecorridos.ResumeLayout(false);
             this.grpRecorridos.PerformLayout();
             this.pnlMapa.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMapa)).EndInit();
             this.grpMapas.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.CMSCrearVertice.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMapa)).EndInit();
             this.ResumeLayout(false);
 
         }

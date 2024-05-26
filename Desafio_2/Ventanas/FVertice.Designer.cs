@@ -37,22 +37,26 @@ namespace Desafio_2.Ventanas
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Red;
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Location = new System.Drawing.Point(166, 117);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 36);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAceptar
             // 
+            this.btnAceptar.BackColor = System.Drawing.Color.Green;
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAceptar.Location = new System.Drawing.Point(53, 117);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(93, 36);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
@@ -79,6 +83,7 @@ namespace Desafio_2.Ventanas
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FVertice";
             this.Text = "Peso del vértice";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FVertice_FormClosing);

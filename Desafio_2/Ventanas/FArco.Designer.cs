@@ -37,22 +37,26 @@ namespace Desafio_2.Ventanas
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Red;
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Location = new System.Drawing.Point(157, 118);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 36);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAceptar
             // 
+            this.btnAceptar.BackColor = System.Drawing.Color.Green;
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAceptar.Location = new System.Drawing.Point(44, 118);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(93, 36);
             this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // textBox1
@@ -80,7 +84,9 @@ namespace Desafio_2.Ventanas
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FArco";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Peso del arco";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FArco_FormClosing);
             this.Load += new System.EventHandler(this.FArco_Load);

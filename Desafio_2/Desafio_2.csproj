@@ -120,6 +120,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\Costa_Rica.png" />
     <Content Include="src\El Salvador.png" />
     <Content Include="src\Honduras.jpeg" />
     <Content Include="src\information.png" />
